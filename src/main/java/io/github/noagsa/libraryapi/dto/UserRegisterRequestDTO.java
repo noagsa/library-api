@@ -1,4 +1,11 @@
 package io.github.noagsa.libraryapi.dto;
 
-public record UserRegisterRequestDTO(String email, String password) {
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
+public record UserRegisterRequestDTO(@NotBlank(message = "Email must not be blank")
+                                     @Email(message = "Invalid email format")
+                                     String email,
+                                     @NotBlank(message = "Password must not be blank")
+                                     String password) {
 }
